@@ -128,16 +128,16 @@ st.write('SNR_Mono = ',10*np.log10(abs(np.dot(np.conj(w).T,Cs))))
 # SINR avec traitement
 SINR = 10*np.log10(abs(np.dot(np.conj(Cs).T, np.conj(zn))))[0][0]
 print(f'SINR = {SINR:.2f}dB')
-st.write(SINR)
+st.write('SINR = ', SINR,'dB')
 
 # SNR en absence de brouillage et avec bruit thermique uniquement
 SNRopt = 10*np.log10(np.dot(np.conj(Cs).T,Cs))[0][0]
-st.write(SNRopt)
+st.write('SNRopt =', SNRopt, 'dB')
 
 # Dégradation due au traitement
 SINR_Loss = SNRopt - SINR
 print(f'SINR_Loss = {SINR_Loss:.2f}dB')
-st.write(SINR_Loss)
+st.write('SINR_Loss = ', SINR_Loss,'dB')
 
 ## FIGURES
 fig = plt.figure()
