@@ -150,33 +150,3 @@ axe.title.set_text(f'Diagramme - Réseau {N} antennes - INR = {INR}dB - Brouilla
 
 # st.pyplot(fig)
 st.plotly_chart(fig)
-
-# Marquage des directions de brouilleurs
-# ii = 0
-# for J in ui:
-#     plt.plot([J,J],[0,Rej[0][ii]], color ='red', linewidth=1.5, linestyle="--")
-# # Marquage de la réjection obtenue
-#     plt.annotate(f'{Rej[0][ii]:.0f}dB',
-#              xy=(J, Rej[0][ii]), xycoords='data',
-#              xytext=(+20, +40+ii*20), textcoords='offset points', fontsize=10,
-#              arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
-#     ii = ii+1
-
-## ESSAI PLOTLY Graph Interactif
-# Add histogram data
-x1 = np.random.randn(200) - 2
-x2 = np.random.randn(200)
-x3 = np.random.randn(200) + 2
-
-# Group data together
-hist_data = [x1, x2, x3]
-
-group_labels = ['Group 1', 'Group 2', 'Group 3']
-
-# Create distplot with custom bin_size
-fig = ff.create_distplot(hist_data, group_labels, bin_size=[.1, .25, .5])
-
-# Plot!
-st.plotly_chart(fig, use_container_width=True)
-
-
