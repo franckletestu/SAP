@@ -122,12 +122,13 @@ st.latex(''' SINR = 10*log_{10}(C_s^H . S_n^{-H} . C_s) ''')
 st.header('SNR Mono-Antenne')
 st.latex(r''' SNR_{MonoAntenne} = 10*log_{10} \frac{(norm(w^H*C_s)^2)} {w^H*S_n*w} ''')
 
-st.write('SNR_Mono = ',10*np.log10(abs(np.dot(np.conj(w).T,Cs))))
+#st.write('SNR_Mono = ',10*np.log10(abs(np.dot(np.conj(w).T,Cs))))
+10*np.log10(abs(np.dot(np.conj(w).T,Cs)))
 
 ## TODO A mettre au propre
 # SINR avec traitement
 SINR = 10*np.log10(abs(np.dot(np.conj(Cs).T, np.conj(zn))))[0][0]
-print(f'SINR = {SINR:.2f}dB')
+#print(f'SINR = {SINR:.2f}dB')
 st.write('SINR = ', SINR,'dB')
 
 # SNR en absence de brouillage et avec bruit thermique uniquement
@@ -136,7 +137,7 @@ st.write('SNRopt =', SNRopt, 'dB')
 
 # Dégradation due au traitement
 SINR_Loss = SNRopt - SINR
-print(f'SINR_Loss = {SINR_Loss:.2f}dB')
+#print(f'SINR_Loss = {SINR_Loss:.2f}dB')
 st.write('SINR_Loss = ', SINR_Loss,'dB')
 
 ## FIGURES
