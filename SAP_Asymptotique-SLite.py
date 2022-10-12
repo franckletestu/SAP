@@ -7,138 +7,100 @@ import streamlit as st
 
 import numpy as np
 from numpy.linalg import inv
-
 import matplotlib.pyplot as plt
+import plotly.figure_factory as ff
 
 # # Calcul asymptotique d'une CRPA N éléments SAP
 
 # ## Définition du scénario
 
 # Nombre d'antennes
-N = 16
+N = st.sidebar.slider('Nombre Antennes',min_value=2,max_value=64,step=1)
+st.write("Nombre d'Antennes = ",N)
 
-
-# $ s_i = e^{2pi \frac{d} {\lambda} sin(\theta)}$ 
-# 
-# $ u_i = \frac{d} {\lambda} sin(\theta) $ 
-
-# In[4]:
-
+st.latex(r''' s_i = e^{2pi \frac{d} {\lambda} sin(\theta)} ''')
+st.latex(r''' u_i = \frac{d} {\lambda} sin(\theta) ''') 
 
 # Direction de brouillage
-# ui = (-0.7,0.4,0.6)
-# ui = (0.6)
-
-
-# In[5]:
-
+ui = st.sidebar.slider('Direction du Brouilleur',min_value=-1.0,max_value=1.0,step=0.01)
+st.write('Direction de brouillage = ',ui)
 
 # Directions de brouillage en angle (P.24 Guercy)
 # Angles en degrés avec 0° au zénith
-ui = st.slider()'Direction d''arrivée',min_value=0.0,max_value=1.0,step=0.01)
-st.write(ui)
 
 # Puissance de brouillage (en dB)
-INR = 40
+INR = st.sidebar.slider('Puissance du Brouilleur',min_value=0.0,max_value=100.0,step=10.0)
+st.write('Puissance de brouillage',INR)
+
 INR_lin = pow(10,(INR/10))
-
-
-# In[7]:
-
 
 # Définition du réseau linéaire, espacement lambda/2
 n = np.arange(-N/2, N/2)
 n = n.reshape(N,1)
 
-
-# In[8]:
-
-
 # Vecteurs de pointages vers les Brouilleurs J
 Vj = np.exp(1j*n*np.pi*ui)
-
-
-# In[9]:
-
 
 # Contrainte Spatiale ADirectionnelle
 Cs = np.zeros((N,1))
 Cs[1]=1
 
-
-# # Calcul des pondérations
-# 
-
+# Calcul des pondérations
 # ## Calcul de la matrice d'intercorrélation idéale
-# $ S_n = INR_{LIN} * (V_j*V_j^{-H}) + I_n $ 
-
-# In[10]:
-
+st.latex(r''' S_n = INR_{LIN} * (V_j*V_j^{-H}) + I_n ''') 
 
 # Calcul de la matrice d'intercorrélation idéale
 Sn = INR_lin*np.dot(Vj,np.conj(Vj).T) + np.identity(N)
 
-
-# ## Calcul des pondérations
-# $ w = \frac {S_n^{-1} * C_s} {C_s^{H} * S_n^{-1} * C_s} $
+# Calcul des pondérations
+st.latex(r''' w = \frac {S_n^{-1} * C_s} {C_s^{H} * S_n^{-1} * C_s} ''')
 # 
 # ou
 # 
-# $ w = \frac {z_n} {C_s^{H} * z_n} $ en posant $ z_n = S_n^{-1} * C_s $
-
-# In[11]:
-
+st.latex(r''' w = \frac {z_n} {C_s^{H} * z_n}''')
+st.write('en posant')
+st.latex(r'''  z_n = S_n^{-1} * C_s ''')
 
 # Calcul des pondérations
 zn = np.linalg.solve(Sn, Cs)
 w = zn / np.dot(np.conj(Cs).T, zn)
 
-
-# In[12]:
-
-
-w
+# TO DO
+# Affichage des pondérations
+# st.write(w)
 
 
-# ## Evaluation des performances
-
-# $ R_{ej} = w^H * V_j $ avec $ V_j $ Vecteur de pointage vers Brouilleur
-
-# In[13]:
-
+# Evaluation des performances
+st.header('Evaluation des performances')
+st.latex(''' R_{ej} = w^H * V_j  ''')
+st.write('avec') 
+st.latex(''' V_j ''')
+st.write('Vecteur de pointage vers Brouilleur ''')
 
 # Evaluation des performances
 Rej = 20*np.log10(abs(np.dot(np.conj(w).T,Vj)))
 
-
-# In[14]:
-
+# Toutes les réjections
 
 Rej
 
-
-# In[15]:
-
-
 # Réjection du 1er brouilleur
-print(f'Réjection = {Rej[0][0]:.0f}dB')
-
+# TODO : Amélioration l'affichage sytle :.0f
+st.write('Réjection du 1er brouilleur = ', Rej[0][0],'dB')
 
 # ## Diagramme d'antenne résultant
+st.title('Diagramme')
 # Obtenu en calculant pour toutes les directions de l'espace
-# $ W^H * U_{dir} $ avec $ U_{dir} $ Vecteur de pointage vers chacune des directions spatiales
-
-# In[16]:
-
+st.latex(''' W^H * U_{dir} ''')
+st.write('avec') 
+st.latex('''  U_{dir} ''')
+st.write('Vecteur de pointage vers chacune des directions spatiales')
 
 # Vecteur de pointage dans toutes les directions à évaluer
 Udir = np.arange(-1, 1,0.01)
 Udir = Udir.reshape(200,1)
 
-
-# In[17]:
-
-
+# Calcul de la réjection dans toutes les directions
 Rejection = np.zeros((200,1))
 ii = 0
 for element in Udir:
@@ -146,82 +108,75 @@ for element in Udir:
     Rejection[ii] = 20*np.log10(abs(np.dot(np.conj(w).T,U)))
     ii = ii+1
 
+# ## SINR
+st.title('SINR')
+# ## Calcul du SINR *asymptotique* en LINEAIRE
+st.header('SINR Asymptotique')
+st.latex(''' SINR = 10*log_{10}(C_s^H . S_n^{-H} . C_s) ''')
 
-# In[18]:
+# ## Calcul du SINR *asymptotique* en dB
+10*np.log10(abs(np.dot(np.conj(Cs).T, np.conj(zn))))[0][0]
 
 
+# ## Calcul du SNR mono-antenne
+st.header('SNR Mono-Antenne')
+st.latex(r''' SNR_{MonoAntenne} = 10*log_{10} \frac{(norm(w^H*C_s)^2)} {w^H*S_n*w} ''')
+
+st.write('SNR_Mono = ',10*np.log10(abs(np.dot(np.conj(w).T,Cs))))
+
+## TODO A mettre au propre
+# SINR avec traitement
+SINR = 10*np.log10(abs(np.dot(np.conj(Cs).T, np.conj(zn))))[0][0]
+print(f'SINR = {SINR:.2f}dB')
+st.write(SINR)
+
+# SNR en absence de brouillage et avec bruit thermique uniquement
+SNRopt = 10*np.log10(np.dot(np.conj(Cs).T,Cs))[0][0]
+st.write(SNRopt)
+
+# Dégradation due au traitement
+SINR_Loss = SNRopt - SINR
+print(f'SINR_Loss = {SINR_Loss:.2f}dB')
+st.write(SINR_Loss)
+
+## FIGURES
 fig = plt.figure()
 axe = fig.add_axes([0,0,1,1])
 axe.plot(Udir,Rejection)
 
 axe.set_xlim([-1, 1])
 #axe.set_ylim([-60, 20])
-axe.title.set_text(f'Diagramme - Réseau {N} antennes - INR = {INR}dB - Brouillage {ui}')
+axe.title.set_text(f'Diagramme - Réseau {N} antennes - INR = {INR}dB - Brouillage {ui} - Loss = {SINR_Loss}')
+
+# st.pyplot(fig)
+st.plotly_chart(fig)
 
 # Marquage des directions de brouilleurs
-ii = 0
-for J in ui:
-    plt.plot([J,J],[0,Rej[0][ii]], color ='red', linewidth=1.5, linestyle="--")
-# Marquage de la réjection obtenue
-    plt.annotate(f'{Rej[0][ii]:.0f}dB',
-             xy=(J, Rej[0][ii]), xycoords='data',
-             xytext=(+20, +40+ii*20), textcoords='offset points', fontsize=10,
-             arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
-    ii = ii+1
+# ii = 0
+# for J in ui:
+#     plt.plot([J,J],[0,Rej[0][ii]], color ='red', linewidth=1.5, linestyle="--")
+# # Marquage de la réjection obtenue
+#     plt.annotate(f'{Rej[0][ii]:.0f}dB',
+#              xy=(J, Rej[0][ii]), xycoords='data',
+#              xytext=(+20, +40+ii*20), textcoords='offset points', fontsize=10,
+#              arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+#     ii = ii+1
 
+## ESSAI PLOTLY Graph Interactif
+# Add histogram data
+x1 = np.random.randn(200) - 2
+x2 = np.random.randn(200)
+x3 = np.random.randn(200) + 2
 
-# ## SINR
+# Group data together
+hist_data = [x1, x2, x3]
 
-# ## Calcul du SINR *asymptotique* en LINEAIRE
-# $ C_s^H * S_n^{-H} * C_s $
+group_labels = ['Group 1', 'Group 2', 'Group 3']
 
-# In[19]:
+# Create distplot with custom bin_size
+fig = ff.create_distplot(hist_data, group_labels, bin_size=[.1, .25, .5])
 
-
-# Calcul du SINR asymptotique LINEAIRE
-# Cs.H*Sn-H*Cs 
-abs(np.dot(np.conj(Cs).T, np.conj(zn)))[0][0]
-
-
-# In[20]:
-
-
-# Confirmation en passant par l'inverse de la matrice
-abs(np.dot(np.conj(Cs).T, np.dot(np.conj(inv(Sn)),Cs)))[0][0]
-
-
-# ## Calcul du SINR *asymptotique* en dB
-# $ 10*log_{10}(C_s^H * S_n^{-H} * C_s) $
-
-# In[21]:
-
-
-10*np.log10(abs(np.dot(np.conj(Cs).T, np.conj(zn))))[0][0]
-
-
-# ## Calcul du SNR mono-antenne
-# $ 10*log_{10} \frac{(norm(w^H*C_s)^2)} {w^H*S_n*w} $
-
-# In[22]:
-
-
-10*np.log10(abs(np.dot(np.conj(w).T,Cs)))
-
-
-# In[23]:
-
-
-np.conj(w).T
-
-
-# In[24]:
-
-
-Cs
-
-
-# In[ ]:
-
-
+# Plot!
+st.plotly_chart(fig, use_container_width=True)
 
 
