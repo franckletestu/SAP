@@ -124,6 +124,7 @@ st.header('SNR Mono-Antenne')
 st.latex(r''' SNR_{MonoAntenne} = 10*log_{10} \frac{(norm(w^H*C_s)^2)} {w^H*S_n*w} ''')
 
 #st.write('SNR_Mono = ',10*np.log10(abs(np.dot(np.conj(w).T,Cs))))
+st.write('SNR par temps clair pour chacun des brouilleurs : ')
 10*np.log10(abs(np.dot(np.conj(w).T,Cs)))
 
 ## TODO A mettre au propre
