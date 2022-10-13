@@ -47,7 +47,7 @@ Cs[1]=1
 
 # Calcul des pondérations
 # ## Calcul de la matrice d'intercorrélation idéale
-st.latex(r''' S_n = INR_{LIN} * (V_j*V_j^{-H}) + I_n ''') 
+st.latex(r''' S_n = INR_{LIN} * (V_j*V_j^{-H}) + I_n * sigma^2 ''') 
 
 # Calcul de la matrice d'intercorrélation idéale
 Sn = INR_lin*np.dot(Vj,np.conj(Vj).T) + np.identity(N)
