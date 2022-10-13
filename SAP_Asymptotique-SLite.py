@@ -45,6 +45,7 @@ Vj = np.exp(1j*n*np.pi*ui)
 # Contrainte Spatiale ADirectionnelle
 Cs = np.zeros((N,1))
 Cs[1]=1
+Cs[0]=1
 
 # Calcul des pondérations
 # ## Calcul de la matrice d'intercorrélation idéale
