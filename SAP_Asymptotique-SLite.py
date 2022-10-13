@@ -82,6 +82,7 @@ Rej = 20*np.log10(abs(np.dot(np.conj(w).T,Vj)))
 
 # Toutes les réjections
 
+st.write('Réjection pour chacun des brouilleurs : ')
 Rej
 
 # Réjection du 1er brouilleur
