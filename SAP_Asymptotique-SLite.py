@@ -37,6 +37,7 @@ INR_lin = pow(10,(INR/10))
 # Définition du réseau linéaire, espacement lambda/2
 n = np.arange(-N/2, N/2)
 n = n.reshape(N,1)
+n = n + 0.5
 
 # Vecteurs de pointages vers les Brouilleurs J
 Vj = np.exp(1j*n*np.pi*ui)
