@@ -1,8 +1,4 @@
 #!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
 import streamlit as st
 
 import numpy as np
@@ -10,7 +6,7 @@ from numpy.linalg import inv
 import matplotlib.pyplot as plt
 import plotly.figure_factory as ff
 
-# # Calcul asymptotique d'une CRPA N éléments SAP
+# # Calcul asymptotique d'une CRPA N éléments linéaire en SAP
 
 # ## Définition du scénario
 
@@ -46,7 +42,6 @@ Vj = np.exp(1j*n*np.pi*ui)
 Cs = np.zeros((N,1))
 Cs[1]=1
 
-
 # Calcul des pondérations
 # ## Calcul de la matrice d'intercorrélation idéale
 st.latex(r''' S_n = INR_{LIN} * (V_j*V_j^{-H}) + I_n * sigma^2 ''') 
@@ -71,7 +66,6 @@ w = zn / np.dot(np.conj(Cs).T, zn)
 # Affichage des pondérations
 # st.write(w)
 
-
 # Evaluation des performances
 st.header('Evaluation des performances')
 st.latex(''' R_{ej} = w^H * V_j  ''')
@@ -83,7 +77,6 @@ st.write('Vecteur de pointage vers Brouilleur ''')
 Rej = 20*np.log10(abs(np.dot(np.conj(w).T,Vj)))
 
 # Toutes les réjections
-
 st.write('Réjection pour chacun des brouilleurs : ')
 Rej
 
@@ -113,9 +106,10 @@ for element in Udir:
 
 # ## SINR
 st.title('SINR')
-# ## Calcul du SINR *asymptotique* en LINEAIRE
+# ## Calcul du SINR *asymptotique* en dB
 st.header('SINR Asymptotique')
 st.latex(''' SINR = 10*log_{10}(C_s^H . S_n^{-H} . C_s) ''')
+st.latex(''' SINR = 10*log_{10}(C_s^H . z_n^H . C_s) ''')
 
 # ## Calcul du SINR *asymptotique* en dB
 10*np.log10(abs(np.dot(np.conj(Cs).T, np.conj(zn))))[0][0]
