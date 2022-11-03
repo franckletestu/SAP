@@ -138,7 +138,7 @@ SINR = 10*np.log10(abs(np.dot(np.conj(Cs).T, np.conj(zn))))[0][0]
 st.write('SINR = ', SINR,'dB')
 
 # SNR en absence de brouillage et avec bruit thermique uniquement
-SNRopt = 10*np.log10(np.dot(np.conj(Cs).T,Cs))[0][0]
+SNRopt = 10*np.log10(abs(np.dot(np.conj(Cs).T,Cs)))[0][0]
 st.write('SNRopt =', SNRopt, 'dB')
 
 # Dégradation due au traitement
