@@ -147,7 +147,7 @@ SINR_Loss = SNRopt - SINR
 st.write('SINR_Loss = ', SINR_Loss,'dB')
 
 # Réjection du brouilleur
-st.write('Réjection du brouilleur = ', Rej,'dB')
+st.write('Réjection du brouilleur = ', Rej[0][0],'dB')
 
 ## FIGURES
 fig = plt.figure()
