@@ -46,6 +46,10 @@ Vj = np.exp(1j*n*np.pi*ui)
 Cs = np.zeros((N,1))
 Cs[1]=1
 
+# Contrainte Spatiale Formation de Faisceau
+Cs = np.zeros((N,1))
+Cs = np.exp(1j*n*np.pi*si)
+
 # Calcul des pondérations
 # ## Calcul de la matrice d'intercorrélation idéale
 st.latex(r''' S_n = INR_{LIN} * (V_j*V_j^{-H}) + I_n * sigma^2 ''') 
