@@ -7,9 +7,10 @@ import matplotlib.pyplot as plt
 import plotly.figure_factory as ff
 
 # # Calcul asymptotique d'une CRPA N éléments linéaire en SAP
+# Pour UN seul brouilleur
+st.title('Calculs asymptotiquespour une CRPA N éléments, réseau linéaire en SAP pour UN seul brouilleur')
 
 # ## Définition du scénario
-
 # Nombre d'antennes
 N = st.sidebar.slider('Nombre Antennes',min_value=2,max_value=64,step=1)
 st.write("Nombre d'Antennes = ",N)
