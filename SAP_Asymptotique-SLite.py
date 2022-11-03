@@ -8,7 +8,7 @@ import plotly.figure_factory as ff
 
 # # Calcul asymptotique d'une CRPA N éléments linéaire en SAP
 # Pour UN seul brouilleur
-st.title('Calculs asymptotiquespour une CRPA N éléments, réseau linéaire en SAP pour UN seul brouilleur')
+st.header('Calculs asymptotiques pour une CRPA N éléments, réseau linéaire en SAP pour UN seul brouilleur')
 
 # ## Définition du scénario
 # Nombre d'antennes
