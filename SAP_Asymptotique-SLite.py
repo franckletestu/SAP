@@ -109,7 +109,7 @@ st.title('SINR')
 # ## Calcul du SINR *asymptotique* en dB
 st.header('SINR Asymptotique')
 st.latex(''' SINR = 10*log_{10}(C_s^H . S_n^{-H} . C_s) ''')
-st.latex(''' SINR = 10*log_{10}(C_s^H . z_n^H . C_s) ''')
+st.latex(''' SINR = 10*log_{10}(C_s^H . z_n^H) ''')
 
 # ## Calcul du SINR *asymptotique* en dB
 10*np.log10(abs(np.dot(np.conj(Cs).T, np.conj(zn))))[0][0]
