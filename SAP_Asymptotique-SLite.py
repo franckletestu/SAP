@@ -145,7 +145,7 @@ axe.plot(Udir,Rejection)
 
 axe.set_xlim([-1, 1])
 #axe.set_ylim([-60, 20])
-axe.title.set_text(f'Diagramme - Réseau {N} antennes - INR = {INR}dB - Brouillage {ui} - Loss = {SINR_Loss}')
+#axe.title.set_text(f'Diagramme - Réseau {N} antennes - INR = {INR}dB - Brouillage {ui} - Loss = {SINR_Loss}')
 
 # st.pyplot(fig)
 st.plotly_chart(fig)
