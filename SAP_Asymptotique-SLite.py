@@ -13,6 +13,7 @@ st.header('Calculs asymptotiques pour une CRPA N éléments, réseau linéaire e
 # ## Définition du scénario
 # Choix Formation de Faisceau ou Nulling
 algo = st.sidebar.radio('Choisissez:', ['Traitement Spatial', 'Formation de Faisceau'])
+st.write(algo)
 
 # Nombre d'antennes
 N = st.sidebar.slider('Nombre Antennes',min_value=2,max_value=64,step=1)
