@@ -49,13 +49,12 @@ n = n + 0.5
 Vj = np.exp(1j*n*np.pi*ui)
 
 # ## Choix entre contrainte SAP ou FF
+Cs = np.zeros((N,1))
 if algo == 1:
     # Contrainte Spatiale ADirectionnelle
-    Cs = np.zeros((N,1))
     Cs[0]=1
 elif algo == 2:
     # Contrainte Spatiale Formation de Faisceau
-    Cs = np.zeros((N,1))
     Cs = np.exp(1j*n*np.pi*si)
 
 st.write(Cs)
