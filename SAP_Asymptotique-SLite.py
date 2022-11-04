@@ -50,11 +50,13 @@ Vj = np.exp(1j*n*np.pi*ui)
 
 # ## Choix entre contrainte SAP ou FF
 Cs = np.zeros((N,1))
-# Contrainte Spatiale ADirectionnelle par défaut
-Cs[0]=1
-if algo == 'Formation de Faisceau':
-    # Contrainte Spatiale Formation de Faisceau
-    Cs = np.exp(1j*n*np.pi*si)
+# Contrainte Spatiale Formation de Faisceau par défaut
+Cs = np.exp(1j*n*np.pi*si)
+
+if algo == 'Traitement Spatial':
+    # Contrainte Spatiale ADirectionnelle 
+    Cs = np.zeros((N,1))
+    Cs[0]=1
 st.write(Cs)
 
 # Calcul des pondérations
