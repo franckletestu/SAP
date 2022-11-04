@@ -48,11 +48,11 @@ n = n + 0.5
 Vj = np.exp(1j*n*np.pi*ui)
 
 # ## Choix entre contrainte SAP ou FF
-if algo == 'Traitement Spatial'
+if algo == 'Traitement Spatial' :
     # Contrainte Spatiale ADirectionnelle
     Cs = np.zeros((N,1))
     Cs[1]=1
-elif
+else:
     # Contrainte Spatiale Formation de Faisceau
     Cs = np.zeros((N,1))
     Cs = np.exp(1j*n*np.pi*si)
