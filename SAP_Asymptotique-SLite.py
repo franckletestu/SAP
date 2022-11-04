@@ -35,7 +35,7 @@ st.write('Direction de brouillage = ',ui, 'u')
 # Angles en degrés avec 0° au zénith
 
 # Puissance de brouillage (en dB)
-INR = st.sidebar.slider('Puissance du Brouilleur',min_value=-100.0,max_value=100.0,step=10.0)
+INR = st.sidebar.slider('Puissance du Brouilleur',min_value=-20.0,max_value=100.0,step=10.0)
 st.write('Puissance de brouillage = ',INR, 'dB')
 
 INR_lin = pow(10,(INR/10))
