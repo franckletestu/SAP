@@ -63,7 +63,7 @@ if algo == 'Traitement Spatial':
     Cs[0]=1
     5
 
-st.write(Cs)
+#st.write(Cs)
 
 # Calcul des pondérations
 # ## Calcul de la matrice d'intercorrélation idéale
