@@ -49,7 +49,7 @@ n = n + 0.5
 Vj = np.exp(1j*n*np.pi*ui)
 
 # ## Choix entre contrainte SAP ou FF
-if algo == "Traitement Spatial":
+if algo == 1:
     # Contrainte Spatiale ADirectionnelle
     Cs = np.zeros((N,1))
     Cs[1]=1
