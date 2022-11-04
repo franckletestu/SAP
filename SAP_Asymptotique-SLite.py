@@ -55,7 +55,7 @@ Cs = np.exp(1j*n*np.pi*si)
 
 if algo == 'Traitement Spatial':
     # Contrainte Spatiale ADirectionnelle 
-    Cs = np.zeros((N,1))
+    # Cs = np.zeros((N,1))
     Cs[0]=1
 st.write(Cs)
 
