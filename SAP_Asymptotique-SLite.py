@@ -53,7 +53,7 @@ if algo == 1:
     # Contrainte Spatiale ADirectionnelle
     Cs = np.zeros((N,1))
     Cs[0]=1
-else:
+elif algo == 2:
     # Contrainte Spatiale Formation de Faisceau
     Cs = np.zeros((N,1))
     Cs = np.exp(1j*n*np.pi*si)
