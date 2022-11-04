@@ -62,6 +62,7 @@ if algo == 'Traitement Spatial':
     4
     Cs[0]=1
     5
+
 st.write(Cs)
 
 # Calcul des pondérations
