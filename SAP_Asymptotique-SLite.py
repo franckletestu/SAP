@@ -11,6 +11,9 @@ import plotly.figure_factory as ff
 st.header('Calculs asymptotiques pour une CRPA N éléments, réseau linéaire en SAP pour UN seul brouilleur')
 
 # ## Définition du scénario
+# Choix Formation de Faisceau ou Nulling
+algo = st.sidebar.radio('Choisissez:', ['SAP', 'FF'])
+
 # Nombre d'antennes
 N = st.sidebar.slider('Nombre Antennes',min_value=2,max_value=64,step=1)
 st.write("Nombre d'Antennes = ",N)
