@@ -56,9 +56,12 @@ Cs = np.exp(1j*n*np.pi*si)
 2
 
 if algo == 'Traitement Spatial':
+    3
     # Contrainte Spatiale ADirectionnelle 
     # Cs = np.zeros((N,1))
+    4
     Cs[0]=1
+    5
 st.write(Cs)
 
 # Calcul des pondérations
