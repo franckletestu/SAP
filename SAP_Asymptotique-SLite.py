@@ -12,8 +12,8 @@ st.header('Calculs asymptotiques pour une CRPA N éléments, réseau linéaire e
 
 # ## Définition du scénario
 # Choix Formation de Faisceau ou Nulling
-# algo = st.sidebar.radio('Choisissez:', ['Traitement Spatial', 'Formation de Faisceau'])
-algo = st.sidebar.radio('Choisissez:', [1, 2])
+algo = st.sidebar.radio('Choisissez:', ['Traitement Spatial', 'Formation de Faisceau'])
+# algo = st.sidebar.radio('Choisissez:', [1, 2])
 st.write(algo)
 
 # Nombre d'antennes
@@ -50,10 +50,10 @@ Vj = np.exp(1j*n*np.pi*ui)
 
 # ## Choix entre contrainte SAP ou FF
 Cs = np.zeros((N,1))
-if algo == 1:
+if algo == 'Traitement Spatial':
     # Contrainte Spatiale ADirectionnelle
     Cs[0]=1
-elif algo == 2:
+elif algo == 'Formation de Faisceau':
     # Contrainte Spatiale Formation de Faisceau
     Cs = np.exp(1j*n*np.pi*si)
 
