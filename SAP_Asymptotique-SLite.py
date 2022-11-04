@@ -51,7 +51,9 @@ Vj = np.exp(1j*n*np.pi*ui)
 # ## Choix entre contrainte SAP ou FF
 Cs = np.zeros((N,1))
 # Contrainte Spatiale Formation de Faisceau par défaut
+1
 Cs = np.exp(1j*n*np.pi*si)
+2
 
 if algo == 'Traitement Spatial':
     # Contrainte Spatiale ADirectionnelle 
