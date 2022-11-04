@@ -52,7 +52,7 @@ Vj = np.exp(1j*n*np.pi*ui)
 if algo == 1:
     # Contrainte Spatiale ADirectionnelle
     Cs = np.zeros((N,1))
-    Cs[1]=1
+    Cs[0]=1
 else:
     # Contrainte Spatiale Formation de Faisceau
     Cs = np.zeros((N,1))
