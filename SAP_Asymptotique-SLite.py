@@ -57,7 +57,7 @@ if algo == 'Traitement Spatial':
 elif algo == 'Formation de Faisceau':
     # Contrainte Spatiale Formation de Faisceau
     2
-Cs = np.exp(1j*n*np.pi*si)
+#Cs = np.exp(1j*n*np.pi*si)
 3
 st.write(Cs)
 
