@@ -16,7 +16,8 @@ algo = st.sidebar.radio('Choisissez:', ['Traitement Spatial', 'Formation de Fais
 st.write(algo)
 
 # Choix Temps Clair çàd sans Brouillage ou avec Brouillage
-temps_clair = st.checkbox('Brouillage OFF')
+# Renvoit True ou False
+temps_clair = st.sidebar.checkbox('Brouillage OFF')
 st.write(temps_clair)
 
 # Nombre d'antennes
