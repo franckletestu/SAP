@@ -127,7 +127,7 @@ Rejection = np.zeros((200,1))
 ii = 0
 for element in Udir:
     U = np.exp(1j*n*np.pi*element)
-    Rejection[ii] = 10*np.log10(abs(np.dot(np.conj(w).T,U)))
+    Rejection[ii] = 20*np.log10(abs(np.dot(np.conj(w).T,U)))
     ii = ii+1
 
 # ## SINR
