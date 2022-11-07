@@ -121,13 +121,13 @@ st.write('Vecteur de pointage vers chacune des directions spatiales')
 Udir = np.arange(-1, 1,0.01)
 Udir = Udir.reshape(200,1)
 
-# Calcul de la réjection dans toutes les directions
+# Calcul du diagramme résultant dans toutes les directions
 # TODO vérifier si 20log ou 10log
-Rejection = np.zeros((200,1))
+Diagramme = np.zeros((200,1))
 ii = 0
 for element in Udir:
     U = np.exp(1j*n*np.pi*element)
-    Rejection[ii] = 20*np.log10(abs(np.dot(np.conj(w).T,U)))
+    Diagramme[ii] = 10*np.log10(abs(np.dot(np.conj(w).T,U)))
     ii = ii+1
 
 # ## SINR
@@ -173,7 +173,7 @@ st.write('Réjection du brouilleur = ', Rej[0][0],'dB')
 ## FIGURES
 fig = plt.figure()
 axe = fig.add_axes([0,0,1,1])
-axe.plot(Udir,Rejection)
+axe.plot(Udir,Diagramme)
 
 axe.set_xlim([-1, 1])
 #axe.set_ylim([-60, 20])
