@@ -34,7 +34,7 @@ st.write('Direction du Signal = ',si, 'u')
 ui = st.sidebar.slider('Direction du Brouilleur (ui)',min_value=-1.0,max_value=1.0,step=0.01)
 st.write('Direction de brouillage = ',ui, 'u')
 
-# Directions de brouillage en angle (P.24 Guercy)
+# TODO Directions de brouillage en angle (P.24 Guercy)
 # Angles en degrés avec 0° au zénith
 
 # Puissance de brouillage (en dB)
@@ -77,9 +77,14 @@ st.latex(r''' w = \frac {z_n} {C_s^{H} * z_n}''')
 st.write('en posant')
 st.latex(r'''  z_n = S_n^{-1} * C_s ''')
 
-# Calcul des pondérations
-zn = np.linalg.solve(Sn, Cs)
-w = zn / np.dot(np.conj(Cs).T, zn)
+## Calcul des pondérations
+if temps_clair:
+    # Application de la contrainte directement si absence de brouillage
+    w = Cs 
+else :
+    # Calucl des pondérations avec la contrainte SAP ou FF sélectionnée
+    zn = np.linalg.solve(Sn, Cs)
+    w = zn / np.dot(np.conj(Cs).T, zn)
 
 # TO DO
 # Affichage des pondérations
