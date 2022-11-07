@@ -16,25 +16,25 @@ algo = st.sidebar.radio('Choisissez:', ['Traitement Spatial', 'Formation de Fais
 st.write(algo)
 
 # Nombre d'antennes
-N = st.sidebar.slider('Nombre Antennes',min_value=2,max_value=64,step=1)
+N = st.sidebar.slider('Nombre Antennes (N)',min_value=2,max_value=64,step=1)
 st.write("Nombre d'Antennes = ",N)
 
 st.latex(r''' s_i = e^{2pi \frac{d} {\lambda} sin(\theta)} ''')
 st.latex(r''' u_i = \frac{d} {\lambda} sin(\theta) ''') 
 
 # Direction du signal utile (pour formation de faisceau)
-si = st.sidebar.slider('Direction du Signal GNSS',min_value=-1.0,max_value=1.0,step=0.01)
+si = st.sidebar.slider('Direction du Signal GNSS (si)',min_value=-1.0,max_value=1.0,step=0.01)
 st.write('Direction du Signal = ',si, 'u')
 
 # Direction de brouillage
-ui = st.sidebar.slider('Direction du Brouilleur',min_value=-1.0,max_value=1.0,step=0.01)
+ui = st.sidebar.slider('Direction du Brouilleur (ui)',min_value=-1.0,max_value=1.0,step=0.01)
 st.write('Direction de brouillage = ',ui, 'u')
 
 # Directions de brouillage en angle (P.24 Guercy)
 # Angles en degrés avec 0° au zénith
 
 # Puissance de brouillage (en dB)
-INR = st.sidebar.slider('Puissance du Brouilleur',min_value=-20.0,max_value=100.0,step=10.0)
+INR = st.sidebar.slider('Puissance du Brouilleur (INR)',min_value=-20.0,max_value=100.0,step=10.0)
 st.write('Puissance de brouillage = ',INR, 'dB')
 
 INR_lin = pow(10,(INR/10))
