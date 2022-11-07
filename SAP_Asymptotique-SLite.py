@@ -122,11 +122,12 @@ Udir = np.arange(-1, 1,0.01)
 Udir = Udir.reshape(200,1)
 
 # Calcul de la réjection dans toutes les directions
+# TODO vérifier si 20log ou 10log
 Rejection = np.zeros((200,1))
 ii = 0
 for element in Udir:
     U = np.exp(1j*n*np.pi*element)
-    Rejection[ii] = 20*np.log10(abs(np.dot(np.conj(w).T,U)))
+    Rejection[ii] = 10*np.log10(abs(np.dot(np.conj(w).T,U)))
     ii = ii+1
 
 # ## SINR
