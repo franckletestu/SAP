@@ -15,6 +15,10 @@ algo = st.sidebar.radio('Choisissez:', ['Traitement Spatial', 'Formation de Fais
 # algo = st.sidebar.radio('Choisissez:', [1, 2])
 st.write(algo)
 
+# Choix Temps Clair çàd sans Brouillage ou avec Brouillage
+temps_clair = st.checkbox('Brouillage OFF')
+st.write(temps_clair)
+
 # Nombre d'antennes
 N = st.sidebar.slider('Nombre Antennes (N)',min_value=2,max_value=64,step=1)
 st.write("Nombre d'Antennes = ",N)
@@ -49,7 +53,6 @@ Vj = np.exp(1j*n*np.pi*ui)
 
 # ## Choix entre contrainte SAP ou FF
 Cs = np.zeros((N,1))
-
 if algo == 'Traitement Spatial': 
     # Contrainte Spatiale ADirectionnelle 
     Cs[0]=1
