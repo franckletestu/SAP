@@ -154,15 +154,17 @@ st.write('SNRopt =', SNRopt, 'dB')
 #st.write('SNR par temps clair pour chacun des brouilleurs : ')
 # 10*np.log10(abs(np.dot(np.conj(w).T,Cs)))
 
-# SINR avec traitement
-SINR = 10*np.log10(abs(np.dot(np.conj(Cs).T, np.conj(zn))))[0][0]
-#print(f'SINR = {SINR:.2f}dB')
-st.write('SINR = ', SINR,'dB')
+# Indicateurs en présence de traitement d'anti-brouillage
+if temps_clair == False:
+    # SINR avec traitement
+    SINR = 10*np.log10(abs(np.dot(np.conj(Cs).T, np.conj(zn))))[0][0]
+    #print(f'SINR = {SINR:.2f}dB')
+    st.write('SINR = ', SINR,'dB')
 
-# Dégradation due au traitement
-SINR_Loss = SNRopt - SINR
-#print(f'SINR_Loss = {SINR_Loss:.2f}dB')
-st.write('SINR_Loss = ', SINR_Loss,'dB')
+    # Dégradation due au traitement
+    SINR_Loss = SNRopt - SINR
+    #print(f'SINR_Loss = {SINR_Loss:.2f}dB')
+    st.write('SINR_Loss = ', SINR_Loss,'dB')
 
 # Réjection du brouilleur
 st.write('Réjection du brouilleur = ', Rej[0][0],'dB')
