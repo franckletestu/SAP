@@ -70,9 +70,6 @@ Sn = INR_lin*np.dot(Vj,np.conj(Vj).T) + np.identity(N)
 
 # Calcul des pondérations
 st.latex(r''' w = \frac {S_n^{-1} * C_s} {C_s^{H} * S_n^{-1} * C_s} ''')
-# 
-# ou
-# 
 st.latex(r''' w = \frac {z_n} {C_s^{H} * z_n}''')
 st.write('en posant')
 st.latex(r'''  z_n = S_n^{-1} * C_s ''')
