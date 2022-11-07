@@ -83,6 +83,7 @@ else:
     # Calcul des pondérations avec la contrainte SAP ou FF sélectionnée
     zn = np.linalg.solve(Sn, Cs)
     w = zn / np.dot(np.conj(Cs).T, zn)
+# fin IF
 
 # TO DO
 # Affichage des pondérations
