@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import streamlit as st
-
 import numpy as np
 from numpy.linalg import inv
 import matplotlib.pyplot as plt
@@ -136,14 +135,15 @@ st.latex(''' SINR = 10*log_{10}(C_s^H . z_n^H) ''')
 st.header('SNR Mono-Antenne')
 st.latex(r''' SNR_{MonoAntenne} = 10*log_{10} \frac{(norm(w^H*C_s)^2)} {w^H*S_n*w} ''')
 
-#st.write('SNR_Mono = ',10*np.log10(abs(np.dot(np.conj(w).T,Cs))))
-st.write('SNR par temps clair pour chacun des brouilleurs : ')
-10*np.log10(abs(np.dot(np.conj(w).T,Cs)))
-
-## TODO A mettre au propre
 # SNR en absence de brouillage et avec bruit thermique uniquement
 SNRopt = 10*np.log10(abs(np.dot(np.conj(Cs).T,Cs)))[0][0]
+st.write('SNR en absence de brouillage et avec bruit thermique uniquement: ')
 st.write('SNRopt =', SNRopt, 'dB')
+
+# TODO Vérifier la formule 
+#st.write('SNR_Mono = ',10*np.log10(abs(np.dot(np.conj(w).T,Cs))))
+#st.write('SNR par temps clair pour chacun des brouilleurs : ')
+# 10*np.log10(abs(np.dot(np.conj(w).T,Cs)))
 
 # SINR avec traitement
 SINR = 10*np.log10(abs(np.dot(np.conj(Cs).T, np.conj(zn))))[0][0]
