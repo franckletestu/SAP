@@ -85,6 +85,7 @@ else:
     zn = np.linalg.solve(Sn, Cs)
     w = zn / np.dot(np.conj(Cs).T, zn)
 
+
 # TO DO
 # Affichage des pondérations
 #st.write(w)
