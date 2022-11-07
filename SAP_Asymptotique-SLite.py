@@ -89,7 +89,7 @@ else:
 
 # TO DO
 # Affichage des pondérations
-# st.write(w)
+st.write(w)
 
 # Evaluation des performances
 st.header('Evaluation des performances')
