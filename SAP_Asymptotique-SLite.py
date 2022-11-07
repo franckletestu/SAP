@@ -81,8 +81,8 @@ st.latex(r'''  z_n = S_n^{-1} * C_s ''')
 if temps_clair:
     # Application de la contrainte directement si absence de brouillage
     w = Cs 
-else :
-    # Calucl des pondérations avec la contrainte SAP ou FF sélectionnée
+else:
+    # Calcul des pondérations avec la contrainte SAP ou FF sélectionnée
     zn = np.linalg.solve(Sn, Cs)
     w = zn / np.dot(np.conj(Cs).T, zn)
 
