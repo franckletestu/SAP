@@ -12,13 +12,12 @@ st.header('Calculs asymptotiques pour une CRPA N éléments, réseau linéaire e
 # ## Définition du scénario
 # Choix Formation de Faisceau ou Nulling
 algo = st.sidebar.radio('Choisissez:', ['Traitement Spatial', 'Formation de Faisceau'])
-# algo = st.sidebar.radio('Choisissez:', [1, 2])
-st.write(algo)
+# st.write(algo)
 
 # Choix Temps Clair çàd sans Brouillage ou avec Brouillage
 # Renvoit True ou False
-temps_clair = st.sidebar.checkbox('Brouillage OFF')
-st.write(temps_clair)
+temps_clair = st.sidebar.checkbox('Brouillage OFF', False)
+#st.write(temps_clair)
 
 # Nombre d'antennes
 N = st.sidebar.slider('Nombre Antennes (N)',min_value=2,max_value=64,step=1)
