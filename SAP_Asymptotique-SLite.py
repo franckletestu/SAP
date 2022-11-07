@@ -78,7 +78,7 @@ st.write('en posant')
 st.latex(r'''  z_n = S_n^{-1} * C_s ''')
 
 ## Calcul des pondérations
-if temps_clair:
+if temps_clair == True:
     # Application de la contrainte directement si absence de brouillage
     w = Cs 
 else:
