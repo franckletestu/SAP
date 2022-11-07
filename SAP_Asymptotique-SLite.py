@@ -82,12 +82,13 @@ if temps_clair == True:
 else:
     # Calcul des pondérations avec la contrainte SAP ou FF sélectionnée
     2
+    zn = np.linalg.solve(Sn, Cs)
+    w = zn / np.dot(np.conj(Cs).T, zn)
 
 
 #
 
-#zn = np.linalg.solve(Sn, Cs)
-#w = zn / np.dot(np.conj(Cs).T, zn)
+
 
 # TO DO
 # Affichage des pondérations
