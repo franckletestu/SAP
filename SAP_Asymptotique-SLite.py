@@ -75,6 +75,9 @@ st.write('en posant')
 st.latex(r'''  z_n = S_n^{-1} * C_s ''')
 
 ## Calcul des pondérations
+# Zn à calculer dans tous les cas car utilisé dans les indicateurs de performances
+# TODO à vérifier
+zn = np.linalg.solve(Sn, Cs)
 if temps_clair == True:
     # Application de la contrainte directement si absence de brouillage
     1
@@ -82,7 +85,6 @@ if temps_clair == True:
 else:
     # Calcul des pondérations avec la contrainte SAP ou FF sélectionnée
     2
-    zn = np.linalg.solve(Sn, Cs)
     w = zn / np.dot(np.conj(Cs).T, zn)
 
 # TO DO
