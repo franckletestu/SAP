@@ -97,7 +97,6 @@ st.latex(''' V_j ''')
 st.write('Vecteur de pointage vers Brouilleur ''')
 
 # Evaluation des performances
-# TODO Vérifier si 10 ou 20log10
 Rej = 20*np.log10(abs(np.dot(np.conj(w).T,Vj)))
 
 # Toutes les réjections
@@ -121,12 +120,11 @@ Udir = np.arange(-1, 1,0.01)
 Udir = Udir.reshape(200,1)
 
 # Calcul du diagramme résultant dans toutes les directions
-# TODO vérifier si 20log ou 10log
 Diagramme = np.zeros((200,1))
 ii = 0
 for element in Udir:
     U = np.exp(1j*n*np.pi*element)
-    Diagramme[ii] = 10*np.log10(abs(np.dot(np.conj(w).T,U)))
+    Diagramme[ii] = 20*np.log10(abs(np.dot(np.conj(w).T,U)))
     ii = ii+1
 
 # ## SINR
