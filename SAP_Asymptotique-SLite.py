@@ -98,7 +98,7 @@ st.write('Vecteur de pointage vers Brouilleur ''')
 
 # Evaluation des performances
 # TODO Vérifier si 10 ou 20log10
-Rej = 10*np.log10(abs(np.dot(np.conj(w).T,Vj)))
+Rej = 20*np.log10(abs(np.dot(np.conj(w).T,Vj)))
 
 # Toutes les réjections
 st.write('Réjection pour chacun des brouilleurs : ')
