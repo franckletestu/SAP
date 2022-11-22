@@ -39,7 +39,7 @@ ui = st.sidebar.slider('Direction du Brouilleur (ui)',min_value=-1.0,max_value=1
 
 # Puissance de brouillage (en dB)
 INR = st.sidebar.slider('Puissance du Brouilleur (INR)',min_value=-20.0,max_value=100.0,step=10.0)
-st.write('Puissance de brouillage = ',INR, 'dB')
+#st.write('Puissance de brouillage = ',INR, 'dB')
 
 INR_lin = pow(10,(INR/10))
 
