@@ -58,7 +58,7 @@ if algo == 'Traitement Spatial':
     Cs[0]=1
 elif algo == 'Formation de Faisceau':
     # Contrainte Spatiale Formation de Faisceau
-    Cs = np.exp(1j*n*np.pi*si)
+    Cs = np.exp(1j*n*np.pi*si)/N
 #st.write(Cs)
 
 # Calcul des pondérations
