@@ -173,7 +173,7 @@ axe = fig.add_axes([0,0,1,1])
 axe.plot(Udir,Diagramme)
 
 axe.set_xlim([-1, 1])
-#axe.set_ylim([-60, 20])
+axe.set_ylim([-60, 10])
 # Pb avec le titre de la figure ==> TODO à corriger
 #axe.title.set_text(f'Diagramme - Réseau {N} antennes - INR = {INR}dB - Brouillage {ui} - Loss = {SINR_Loss}')
 
